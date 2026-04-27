@@ -1,0 +1,24 @@
+
+/*
+    Welcome to your first dbt model!
+    Did you know that you can also configure models directly within SQL files?
+    This will override configurations stated in dbt_project.yml
+
+    Try changing "table" to "view" below
+*/
+
+{{ config(materialized='table') }}
+
+with source_data as (
+
+select component_name
+     , metric_name
+     , from_timestamp::date
+     , max(max_value)
+     , min(min_value)
+     , count(1) as "amount"
+ from metrics.metrics
+group by 1,2,3
+)
+select *
+from source_data
