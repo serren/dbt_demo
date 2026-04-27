@@ -1,0 +1,4 @@
+data_tests:
+  - name: test_min_max
+    description: >
+      Test verifies only items having min > 5 or max < 90 are processed.
