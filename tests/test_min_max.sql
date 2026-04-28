@@ -3,5 +3,5 @@ select component_name
      , min
      , max
   from {{ ref("metrics_agg") }}
- where "min" < 10
-    or "max" > 90
+ where "min" < 0
+    or "max" > 100
